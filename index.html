@@ -3,114 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AllHub | Zero Ticket Backlog for B2B SaaS</title>
+    <title>AllHub | Autonomous AI Support for B2B SaaS</title>
     <style>
         :root {
             --primary: #635bff;
             --primary-dark: #0a2540;
             --accent: #00d4ff;
             --text-main: #425466;
+            --text-light: #727f96;
             --bg-light: #f6f9fc;
+            --white: #ffffff;
         }
+        * { box-sizing: border-box; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0; 
-            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0; padding: 0;
             background: var(--bg-light); 
             color: var(--primary-dark);
-            line-height: 1.5;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        header {
-            padding: 20px 40px;
+        
+        /* Navigation */
+        nav {
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
         }
-        .logo { font-weight: 800; font-size: 24px; color: var(--primary); letter-spacing: -1px; }
+        .logo { font-weight: 800; font-size: 24px; color: var(--primary); letter-spacing: -1px; display: flex; align-items: center; }
+        .logo svg { margin-right: 8px; }
+
+        /* Hero Section */
         .hero {
-            padding: 80px 20px;
+            padding: 160px 5% 100px;
             text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+            background: radial-gradient(circle at top right, #eef2ff, #f6f9fc);
         }
-        h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1.5px; line-height: 1.1; }
-        .hero p { font-size: 20px; color: var(--text-main); margin-bottom: 30px; }
+        .badge { 
+            background: #e6ebf1; color: var(--primary); 
+            padding: 6px 16px; border-radius: 30px; 
+            font-size: 13px; font-weight: 700; 
+            text-transform: uppercase; margin-bottom: 24px; 
+            display: inline-block; letter-spacing: 1px;
+        }
+        h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; line-height: 1.05; }
+        .hero p { font-size: clamp(18px, 2vw, 22px); color: var(--text-main); max-width: 700px; margin: 0 auto 40px; }
         
-        .card { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 16px; 
-            box-shadow: 0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3); 
-            max-width: 450px;
-            margin: 0 auto;
+        /* Visual Support */
+        .app-preview {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 50px 100px -20px rgba(50,50,93,0.15), 0 30px 60px -30px rgba(0,0,0,0.2);
+            padding: 10px;
+            border: 1px solid #e6e9ef;
         }
-        .features {
-            text-align: left;
-            margin: 30px 0;
-            font-size: 16px;
-            color: var(--text-main);
-        }
-        .feature-item { margin-bottom: 12px; display: flex; align-items: center; }
-        .feature-item:before { content: "✓"; color: var(--accent); font-weight: bold; margin-right: 10px; }
+        .app-preview img { width: 100%; border-radius: 12px; display: block; filter: saturate(1.2); }
 
-        .price-box {
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        .price { font-size: 32px; font-weight: 800; color: var(--primary-dark); }
-        .price span { font-size: 16px; font-weight: normal; color: var(--text-main); }
+        /* Features Grid */
+        .section-padding { padding: 100px 5%; max-width: 1100px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
+        .feature-card { background: var(--white); padding: 40px; border-radius: 16px; border: 1px solid #f0f2f5; transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); }
+        .icon-box { width: 48px; height: 48px; background: #f0f4ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); }
+        .feature-card h3 { font-size: 20px; margin-bottom: 12px; }
+        .feature-card p { color: var(--text-light); font-size: 16px; }
 
+        /* How it Works */
+        .steps { text-align: center; background: var(--primary-dark); color: var(--white); padding: 100px 5%; }
+        .steps h2 { font-size: 40px; margin-bottom: 60px; }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .step { padding: 20px; }
+        .step-num { font-size: 14px; color: var(--accent); font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .step h4 { font-size: 22px; margin-bottom: 15px; }
+
+        /* Pricing Card */
+        .pricing { text-align: center; }
+        .price-card { 
+            background: white; padding: 60px; border-radius: 24px; 
+            box-shadow: 0 13px 27px -5px rgba(50,50,93,0.25); 
+            max-width: 500px; margin: 0 auto; border: 2px solid var(--primary);
+            position: relative;
+        }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 20px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .amount { font-size: 64px; font-weight: 800; letter-spacing: -2px; }
+        .amount span { font-size: 20px; color: var(--text-light); font-weight: 400; letter-spacing: 0; }
+        
         .btn { 
-            display: block; 
-            background: var(--primary); 
-            color: white; 
-            padding: 16px 30px; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.2s;
-            box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+            display: block; background: var(--primary); color: white; 
+            padding: 20px 40px; text-decoration: none; border-radius: 8px; 
+            font-weight: 600; font-size: 18px; transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(50,50,93,.11); margin-top: 30px;
         }
-        .btn:hover { transform: translateY(-2px); background: #5469d4; box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08); }
-        
-        .footer { margin-top: 60px; font-size: 14px; color: #a3acb9; text-align: center; padding-bottom: 40px; }
-        .badge { background: #e6ebf1; color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+        .btn:hover { transform: translateY(-2px); background: #5469d4; box-shadow: 0 7px 14px rgba(50,50,93,.1); }
+
+        footer { padding: 60px 5%; text-align: center; color: var(--text-light); border-top: 1px solid #e6e9ef; font-size: 14px; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">AllHub</div>
-    </header>
+    <nav>
+        <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="8" fill="#635BFF"/>
+                <path d="M10 16L14 20L22 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            AllHub
+        </div>
+    </nav>
     
     <section class="hero">
-        <div class="badge">Early Access Active</div>
-        <h1>Your B2B SaaS support, <br><span style="color: var(--primary);">on autopilot.</span></h1>
-        <p>Deploy a specialized AI agent that resolves L1 tickets and reduces your support backlog by 70% in 5 minutes.</p>
+        <div class="badge">Next-Gen AI Outreach</div>
+        <h1>Automate Support. <br><span style="color: var(--primary);">Scale Faster.</span></h1>
+        <p>Deploy an autonomous AI agent that resolves 70% of your B2B SaaS tickets in minutes. No code. No complexity. Just results.</p>
         
-        <div class="card">
-            <div class="price-box">
-                <div class="price">$3 <span>/ month</span></div>
-                <div style="font-size: 13px; color: #ff5f5f; font-weight: 600;">Launch Offer: First 100 customers only</div>
-            </div>
-            
-            <div class="features">
-                <div class="feature-item">Custom L1 Support Agent</div>
-                <div class="feature-item">Automated Ticket Classification</div>
-                <div class="feature-item">Zero-Code Integration</div>
-                <div class="feature-item">Daily Performance Insights</div>
-            </div>
-            
-            <a href="https://buy.stripe.com/aFacN6c359He2L85s40ZW02" class="btn">Get Started Now</a>
+        <div class="app-preview">
+            <img src="https://images.unsplash.com/photo-1551288049-bbbda536639a?auto=format&fit=crop&q=80&w=1200&h=600" alt="Dashboard Preview">
         </div>
     </section>
 
-    <div class="footer">
-        Powered by Felix-Z & Nexus Optimize. <br>
-        Built for the next generation of SaaS.
-    </div>
+    <section class="section-padding">
+        <div style="text-align:center">
+            <h2 style="font-size:36px">Built for modern SaaS teams</h2>
+            <p style="color:var(--text-light)">Stop losing customers to support delays.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="feature-card">
+                <div class="icon-box">⚡</div>
+                <h3>Instant Integration</h3>
+                <p>Simply point AllHub to your documentation URL. Our AI learns your entire product suite in under 60 seconds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">🤖</div>
+                <h3>Autonomous Resolution</h3>
+                <p>Handles Level 1 support queries, bug reports, and onboarding questions without human intervention.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">📊</div>
+                <h3>Smart Insights</h3>
+                <p>Receive daily reports on ticket trends and customer sentiment to improve your product roadmap.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps">
+        <div class="section-padding">
+            <h2>Three steps to freedom</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <span class="step-num">Step 01</span>
+                    <h4>Connect</h4>
+                    <p>Sync your existing help center or documentation.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">Step 02</span>
+                    <h4>Train</h4>
+                    <p>Our AI processes your data with neural precision.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">Step 03</span>
+                    <h4>Deploy</h4>
+                    <p>Embed the widget and watch your backlog vanish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding pricing">
+        <div class="price-card">
+            <div class="popular-badge">Limited Launch Offer</div>
+            <div class="badge">Early Adopter Plan</div>
+            <div class="amount">$3<span>/month</span></div>
+            <p style="color:var(--text-light); margin: 20px 0;">All features included. Zero setup fees. Cancel anytime.</p>
+            
+            <div style="text-align:left; margin: 30px 0;">
+                <div style="margin-bottom:10px">✅ Unlimited AI Conversations</div>
+                <div style="margin-bottom:10px">✅ Custom Brand Styling</div>
+                <div style="margin-bottom:10px">✅ Multi-language Support</div>
+                <div style="margin-bottom:10px">✅ Priority Neural Training</div>
+            </div>
+            
+            <a href="https://buy.stripe.com/aFacN6c359He2L85s40ZW02" class="btn">Start Your Trial Now</a>
+            <p style="font-size:12px; margin-top:20px; color:var(--text-light)">Secured by Stripe. 30-day money-back guarantee.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nexus Optimize | AllHub AI. All rights reserved.</p>
+        <p style="margin-top:10px; font-size:12px opacity:0.6">Powered by the Zira-Felix Resonance Engine.</p>
+    </footer>
 </body>
 </html>
