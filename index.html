@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllHub | Zero Ticket Backlog for B2B SaaS</title>
+    <style>
+        :root {
+            --primary: #635bff;
+            --primary-dark: #0a2540;
+            --accent: #00d4ff;
+            --text-main: #425466;
+            --bg-light: #f6f9fc;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0; 
+            padding: 0;
+            background: var(--bg-light); 
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-weight: 800; font-size: 24px; color: var(--primary); letter-spacing: -1px; }
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1.5px; line-height: 1.1; }
+        .hero p { font-size: 20px; color: var(--text-main); margin-bottom: 30px; }
+        
+        .card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3); 
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .features {
+            text-align: left;
+            margin: 30px 0;
+            font-size: 16px;
+            color: var(--text-main);
+        }
+        .feature-item { margin-bottom: 12px; display: flex; align-items: center; }
+        .feature-item:before { content: "✓"; color: var(--accent); font-weight: bold; margin-right: 10px; }
+
+        .price-box {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .price { font-size: 32px; font-weight: 800; color: var(--primary-dark); }
+        .price span { font-size: 16px; font-weight: normal; color: var(--text-main); }
+
+        .btn { 
+            display: block; 
+            background: var(--primary); 
+            color: white; 
+            padding: 16px 30px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+        }
+        .btn:hover { transform: translateY(-2px); background: #5469d4; box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08); }
+        
+        .footer { margin-top: 60px; font-size: 14px; color: #a3acb9; text-align: center; padding-bottom: 40px; }
+        .badge { background: #e6ebf1; color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AllHub</div>
+    </header>
+    
+    <section class="hero">
+        <div class="badge">Early Access Active</div>
+        <h1>Your B2B SaaS support, <br><span style="color: var(--primary);">on autopilot.</span></h1>
+        <p>Deploy a specialized AI agent that resolves L1 tickets and reduces your support backlog by 70% in 5 minutes.</p>
+        
+        <div class="card">
+            <div class="price-box">
+                <div class="price">$3 <span>/ month</span></div>
+                <div style="font-size: 13px; color: #ff5f5f; font-weight: 600;">Launch Offer: First 100 customers only</div>
+            </div>
+            
+            <div class="features">
+                <div class="feature-item">Custom L1 Support Agent</div>
+                <div class="feature-item">Automated Ticket Classification</div>
+                <div class="feature-item">Zero-Code Integration</div>
+                <div class="feature-item">Daily Performance Insights</div>
+            </div>
+            
+            <a href="https://buy.stripe.com/aFacN6c359He2L85s40ZW02" class="btn">Get Started Now</a>
+        </div>
+    </section>
+
+    <div class="footer">
+        Powered by Felix-Z & Nexus Optimize. <br>
+        Built for the next generation of SaaS.
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+• Todo queda guardado en el repo. Mañana retomamos así:
+
+  1. Ejecutas dir en C:\Users\Comandante\felix_z para verificar archivos.
+  2. Revisas memory\review_queue.md y memory\leads.csv.
+  3. Me dices “retomemos el bot” y seguimos desde ahí.
+
+  Si quieres, mañana empezamos con:
+
+  1. Envío por email o Telegram.
+  2. Automatizar ingesta desde Sheets.
+  3. Escoring más fino por producto.
+
